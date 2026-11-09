@@ -72,7 +72,7 @@ function dayEvents(d){
  return d.events;
 }
 function updateDayDetails(d){
- const relevant=travelRoutes.filter(r=>r.date===d.date||(r.id==='venue'&&['11/13','11/14','11/15'].includes(d.date)));
+ const relevant=travelRoutes.filter(r=>(r.date===d.date||(r.id==='venue'&&['11/13','11/14','11/15'].includes(d.date)))&&!(r.id==='bulls-out'&&foodChosen.billy));
  routeSelect.innerHTML=relevant.map(r=>`<option value="${r.id}">${r.title}</option>`).join('');
  document.getElementById('transport').hidden=!relevant.length;
  if(relevant.length)showRoute(relevant[0].id);
